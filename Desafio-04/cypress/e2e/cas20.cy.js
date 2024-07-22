@@ -1,0 +1,73 @@
+describe('Pesquisa', () => {
+    it('Pesquisa de produtos e verificação', () => {
+        cy.visit("https://automationexercise.com/")
+        
+        cy.contains("Signup / Login").click()
+        cy.get('[data-qa="signup-name"]').type("Nanimv0112")
+        cy.get('[data-qa="signup-email"]').type("nanimv0112@gmail.com")
+        cy.get('[data-qa="signup-button"]').click()
+        cy.get('#id_gender1').click()
+        cy.get('#id_gender2').click()
+        cy.get('[data-qa="password"]').type("12121212")
+        cy.get('[data-qa="days"]').select('25')
+        cy.get('[data-qa="months"]').select('August')
+        cy.get('[data-qa="years"]').select('2000')
+        cy.get('#newsletter').click()
+        cy.get('#optin').click()
+        cy.get('[data-qa="first_name"]').type("QaDev21212")
+        cy.get('[data-qa="last_name"]').type("Oliveira")
+        cy.get('[data-qa="company"]').type("DMS")
+        cy.get('[data-qa="address"]').type("Rua Barao Silva")
+        cy.get('[data-qa="address2"]').type("Rua Doutor Silva")
+        cy.get('[data-qa="country"]').select('Canada')
+        cy.get('[data-qa="state"]').type("Ontario")
+        cy.get('[data-qa="city"]').type("Toronto")
+        cy.get('[data-qa="zipcode"]').type("123567890-90")
+        cy.get('[data-qa="mobile_number"]').type("21999098778")
+        cy.get('[data-qa="create-account"]').click()
+        cy.get('[data-qa="continue-button"]').click()
+        cy.contains("Logout").click()
+        
+        
+        
+        cy.contains("Products").click()
+        cy.get('.title').should("have.text", "All Products")
+        cy.get('#search_product').type("Tshirts")
+        cy.get('#submit_search').click()
+        cy.get('.title').should("have.text", "Searched Products")
+        cy.get(':nth-child(3) > .product-image-wrapper > .single-products > .productinfo > .btn').click()
+        cy.get('.modal-footer > .btn').click()
+        cy.get(':nth-child(4) > .product-image-wrapper > .single-products > .productinfo > .btn').click()
+        cy.get('.modal-footer > .btn').click()
+        cy.get(':nth-child(5) > .product-image-wrapper > .single-products > .productinfo > .btn').click()
+        cy.get('.modal-footer > .btn').click()
+        cy.get(':nth-child(6) > .product-image-wrapper > .single-products > .productinfo > .btn').click()
+        cy.get('.modal-footer > .btn').click()
+        cy.get(':nth-child(7) > .product-image-wrapper > .single-products > .productinfo > .btn').click()
+        cy.get('.modal-footer > .btn').click()
+        cy.get(':nth-child(8) > .product-image-wrapper > .single-products > .productinfo > .btn').click()
+        cy.get('u').click()
+        cy.get('#product-2 > .cart_description > h4 > a').should("have.text", "Men Tshirt")
+        cy.get('#product-28 > .cart_description > h4 > a').should("have.text", "Pure Cotton V-Neck T-Shirt")
+        cy.get('#product-29 > .cart_description > h4 > a').should("have.text", "Green Side Placket Detail T-Shirt")
+        cy.get('#product-30 > .cart_description > h4 > a').should("have.text", "Premium Polo T-Shirts")
+        cy.get('#product-31 > .cart_description > h4 > a').should("have.text", "Pure Cotton Neon Green Tshirt")
+        cy.get('#product-43 > .cart_description > h4 > a').should("have.text", "GRAPHIC DESIGN MEN T SHIRT - BLUE")
+       
+        cy.contains("Signup / Login").click()
+        cy.get('[data-qa="login-email"]').type("nanimv0112@gmail.com")
+        cy.get('[data-qa="login-password"]').type("12121212")
+        cy.get('[data-qa="login-button"]').click()
+        cy.contains("Cart").click()
+        cy.get('#product-2 > .cart_description > h4 > a').should("have.text", "Men Tshirt")
+        cy.get('#product-28 > .cart_description > h4 > a').should("have.text", "Pure Cotton V-Neck T-Shirt")
+        cy.get('#product-29 > .cart_description > h4 > a').should("have.text", "Green Side Placket Detail T-Shirt")
+        cy.get('#product-30 > .cart_description > h4 > a').should("have.text", "Premium Polo T-Shirts")
+        cy.get('#product-31 > .cart_description > h4 > a').should("have.text", "Pure Cotton Neon Green Tshirt")
+        cy.get('#product-43 > .cart_description > h4 > a').should("have.text", "GRAPHIC DESIGN MEN T SHIRT - BLUE")
+
+
+
+
+    });
+});

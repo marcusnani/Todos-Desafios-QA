@@ -1,0 +1,43 @@
+describe('Verificar', () => {
+    it('Verificar entrega', () => {
+        cy.visit("https://automationexercise.com/")
+
+        cy.contains("Signup / Login").click()
+        cy.get('[data-qa="signup-name"]').type("Nanimv70")
+        cy.get('[data-qa="signup-email"]').type("nani22mv7072122@gmail.com")
+        cy.get('[data-qa="signup-button"]').click()
+        cy.get('#id_gender1').click()
+        cy.get('#id_gender2').click()
+        cy.get('[data-qa="password"]').type("12121212")
+        cy.get('[data-qa="days"]').select('25')
+        cy.get('[data-qa="months"]').select('August')
+        cy.get('[data-qa="years"]').select('2000')
+        cy.get('#newsletter').click()
+        cy.get('#optin').click()
+        cy.get('[data-qa="first_name"]').type("QaDev21212")
+        cy.get('[data-qa="last_name"]').type("Oliveira")
+        cy.get('[data-qa="company"]').type("DMS")
+        cy.get('[data-qa="address"]').type("Rua Barao Silva")
+        cy.get('[data-qa="address2"]').type("Rua Doutor Silva")
+        cy.get('[data-qa="country"]').select('Canada')
+        cy.get('[data-qa="state"]').type("Ontario")
+        cy.get('[data-qa="city"]').type("Toronto")
+        cy.get('[data-qa="zipcode"]').type("123567890-90")
+        cy.get('[data-qa="mobile_number"]').type("21999098778")
+        cy.get('[data-qa="create-account"]').click()
+        cy.get('[data-qa="continue-button"]').click()
+
+        cy.contains("Products").click()
+        cy.get(':nth-child(3) > .product-image-wrapper > .single-products > .productinfo > .btn').click()
+        cy.get('u').click()
+        cy.get('.col-sm-6 > .btn').click()
+        cy.get('#address_delivery > .address_title > .page-subheading').should("have.text", "Your delivery address")
+        cy.get('#address_delivery > :nth-child(4)').should("have.text", "Rua Barao Silva")
+        cy.get('#address_invoice > .address_title > .page-subheading').should("have.text", "Your billing address")
+        cy.get('#address_invoice > :nth-child(4)').should("have.text", "Rua Barao Silva")
+        cy.get(':nth-child(5) > a').click()
+        cy.get('[data-qa="account-deleted"]').should("have.text", "Account Deleted!")
+        cy.get('[data-qa="continue-button"]').click()
+        
+    });
+});
